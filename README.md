@@ -5,6 +5,7 @@
 ## Contents
 
 - [Day 1](src/day_01.rs)
+- [Day 2](src/day_02.rs)
 
 ## License
 
