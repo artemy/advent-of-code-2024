@@ -5,8 +5,9 @@ use std::iter::zip;
 pub(crate) fn run() {
     let input =
         fs::read_to_string("input/day_01.txt").expect("Something went wrong reading the file");
-    println!("Part 01: {}", part_01(input.to_string()));
-    println!("Part 02: {}", part_02(input.to_string()));
+    println!("Day 01");
+    println!("->Part 01: {}", part_01(&input));
+    println!("->Part 02: {}", part_02(&input));
 }
 
 fn parse_input(input: &str) -> (Vec<i32>, Vec<i32>) {
@@ -23,7 +24,7 @@ fn parse_input(input: &str) -> (Vec<i32>, Vec<i32>) {
     (first, second)
 }
 
-fn part_01(input: String) -> i32 {
+fn part_01(input: &str) -> i32 {
     let (mut first, mut second) = parse_input(&input);
 
     first.sort();
@@ -32,7 +33,7 @@ fn part_01(input: String) -> i32 {
     zip(first, second).fold(0, |acc, (f, s)| acc + i32::abs(f - s))
 }
 
-fn part_02(input: String) -> i32 {
+fn part_02(input: &str) -> i32 {
     let (first, second) = parse_input(&input);
 
     let mut count_numbers = HashMap::new();
@@ -58,10 +59,10 @@ mod tests {
 
     #[test]
     fn test_part_01() {
-        assert_eq!(part_01(INPUT.to_string()), 11);
+        assert_eq!(part_01(INPUT), 11);
     }
     #[test]
     fn test_part_02() {
-        assert_eq!(part_02(INPUT.to_string()), 31);
+        assert_eq!(part_02(INPUT), 31);
     }
 }
