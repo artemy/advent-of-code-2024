@@ -25,7 +25,7 @@ fn parse_input(input: &str) -> (Vec<i32>, Vec<i32>) {
 }
 
 fn part_01(input: &str) -> i32 {
-    let (mut first, mut second) = parse_input(&input);
+    let (mut first, mut second) = parse_input(input);
 
     first.sort();
     second.sort();
@@ -34,7 +34,7 @@ fn part_01(input: &str) -> i32 {
 }
 
 fn part_02(input: &str) -> i32 {
-    let (first, second) = parse_input(&input);
+    let (first, second) = parse_input(input);
 
     let mut count_numbers = HashMap::new();
 

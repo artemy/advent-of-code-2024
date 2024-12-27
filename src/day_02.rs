@@ -20,21 +20,21 @@ fn parse_input(input: &str) -> Vec<Vec<i32>> {
 }
 
 fn part_01(input: &str) -> i32 {
-    parse_input(&input)
+    parse_input(input)
         .iter()
-        .map(|v| is_safe(v))
+        .map(|x| is_safe(x))
         .fold(0, |acc, x| acc + x as i32)
 }
 
-fn is_safe(v: &Vec<i32>) -> bool {
+fn is_safe(v: &[i32]) -> bool {
     let differences: Vec<i32> = v.windows(2).map(|w| w[0] - w[1]).collect();
-    let all_increasing = differences.iter().all(|&x| 1 <= x && x <= 3);
-    let all_decreasing = differences.iter().all(|&x| -3 <= x && x <= -1);
+    let all_increasing = differences.iter().all(|&x| (1..=3).contains(&x));
+    let all_decreasing = differences.iter().all(|&x| (-3..=-1).contains(&x));
     all_increasing || all_decreasing
 }
 
 fn part_02(input: &str) -> i32 {
-    parse_input(&input)
+    parse_input(input)
         .iter()
         .map(|v| {
             if is_safe(v) {
